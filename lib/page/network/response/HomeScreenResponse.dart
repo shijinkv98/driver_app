@@ -69,6 +69,7 @@ class Orders {
   String ordertime;
   String paymentmod;
   String accepted;
+  String customer_img;
   List<Address> address;
   String customername;
   List<Ordersnew> ordersnew;
@@ -79,6 +80,7 @@ class Orders {
         this.paymentmod,
         this.accepted,
         this.address,
+        this.customer_img,
         this.customername,
         this.ordersnew});
 
@@ -86,6 +88,7 @@ class Orders {
     orderid = json['orderid'];
     ordertime = json['ordertime'];
     paymentmod = json['paymentmod'];
+    customer_img = json['customer_img'];
     accepted = json['accepted'];
     if (json['address'] != null) {
       address = new List<Address>();
@@ -108,6 +111,7 @@ class Orders {
     data['ordertime'] = this.ordertime;
     data['paymentmod'] = this.paymentmod;
     data['accepted'] = this.accepted;
+    data['customer_img'] = this.customer_img;
     if (this.address != null) {
       data['address'] = this.address.map((v) => v.toJson()).toList();
     }

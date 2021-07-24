@@ -2,8 +2,11 @@
 //**Developed by Shijin July 2021
 
 import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:projectname33/page/notifier/age_restrict_notifier.dart';
 import 'package:projectname33/page/notifier/checkbox_notifier.dart';
 import 'package:projectname33/page/notifier/home/duty_notifier.dart';
@@ -23,12 +26,37 @@ import 'page/screens/splash_screen.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:background_location/background_location.dart';
 
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    'This channel is used for important notifications.', // description
+    importance: Importance.high,
+    playSound: true);
 
-void main() {
-  // SharedPreferences.setMockInitialValues({});
-  runApp(MyApp());
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('A bg message just showed up :  ${message.messageId}');
 }
 
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+  runApp(MyApp());
+}
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
@@ -36,7 +64,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   static const MethodChannel platformMethodChannel =
-      const MethodChannel('com.jafseel/firebase');
+  const MethodChannel('com.jafseel/firebase');
   @override
   void initState() {
     super.initState();
@@ -161,11 +189,11 @@ class _MyAppState extends State<MyApp> {
                 return MaterialPageRoute(builder: (_) => LoginScreen());
               }
               break;
-            // case '/home':
-            //   {
-            //     return MaterialPageRoute(builder: (_) => HomeScreen());
-            //   }
-            //   break;
+          // case '/home':
+          //   {
+          //     return MaterialPageRoute(builder: (_) => HomeScreen());
+          //   }
+          //   break;
             case '/homenew':
               {
                 return MaterialPageRoute(builder: (_) => HomeScreenNew());
@@ -299,7 +327,7 @@ class Item {
     final String routeName = '/detail/$itemId';
     return routes.putIfAbsent(
       routeName,
-      () => MaterialPageRoute<void>(
+          () => MaterialPageRoute<void>(
         settings: RouteSettings(name: routeName),
         builder: (BuildContext context) => Text(itemId.toString()),
       ),

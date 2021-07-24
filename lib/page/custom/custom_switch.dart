@@ -80,7 +80,7 @@ class _CustomSwitchState extends State<CustomSwitch>
                             style: TextStyle(
                                 color: widget.activeTextColor,
                                 fontWeight: FontWeight.w400,
-                                fontSize: 12.0),
+                                fontSize: 10.0),
                           ),
                         )
                       : Container(),
@@ -101,7 +101,7 @@ class _CustomSwitchState extends State<CustomSwitch>
                             style: TextStyle(
                                 color: widget.inactiveTextColor,
                                 fontWeight: FontWeight.w400,
-                                fontSize: 12.0),
+                                fontSize: 10.0),
                           ),
                         )
                       : Container(),

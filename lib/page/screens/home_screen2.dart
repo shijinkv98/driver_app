@@ -2,9 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:projectname33/local_notications_helper.dart';
 import 'package:projectname33/page/custom/custom_switch.dart';
 import 'package:projectname33/page/helper/apiparams.dart';
 import 'package:projectname33/page/helper/apiurldata.dart';
@@ -28,7 +26,7 @@ class HomeScreenNew extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreenNew> {
-  final notifications = FlutterLocalNotificationsPlugin();
+
   HomeScreenResponse homeScreenResponse;
   bool isSwitched = false;
   bool status = false;
@@ -492,7 +490,7 @@ class _HomeScreenState extends State<HomeScreenNew> {
           height: 80,
           fit: BoxFit.fitHeight,
           placeholder: 'assets/images/homemade.jpg',
-          image: 'assets/images/homemade.jpg',
+          image: orders.customer_img,
           // image: orders.image,
           // image: order?.packageInfo?.origination?.logo ?? '',
         ),
@@ -612,18 +610,16 @@ class _HomeScreenState extends State<HomeScreenNew> {
             height: 25,
             child:
             CustomSwitch(
-              value: status==true?true:false,
+              value: status,
               activeColor: colorPrimaryLight,
               activeTextColor: Colors.white,
               inactiveColor: iconColor1,
               inactiveTextColor: Colors.white,
               onChanged: (value) {
-                status != false ? dutyoff():dutyupdate();
+                status != true ? dutyupdate():dutyoff();
                 setState(() {
                   status = value;
                 });
-
-
               },
             ),
           ),
@@ -648,10 +644,10 @@ class _HomeScreenState extends State<HomeScreenNew> {
       ApiCall().showToast(result.message != null ? result.message : "");
       if (result.success == "1") {
         ApiCall().showToast(result.message);
-        // NextPageReplacement(context, HomeScreenNew());
-        // setState(() {
-        //
-        // });
+
+        setState(() {
+          NextPageReplacement(context, HomeScreenNew());
+        });
       }
     });
   }
@@ -670,9 +666,9 @@ class _HomeScreenState extends State<HomeScreenNew> {
       if (result.success == "1") {
         ApiCall().showToast(result.message);
         // NextPageReplacement(context, HomeScreenNew());
-        // setState(() {
-        //
-        // });
+        setState(() {
+          NextPageReplacement(context, HomeScreenNew());
+        });
       }
     });
   }
