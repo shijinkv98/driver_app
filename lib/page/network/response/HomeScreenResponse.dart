@@ -355,6 +355,7 @@ class Deliaddressacc {
   String lat;
   String long;
   String mobile;
+  String ccode;
 
   Deliaddressacc(
       {this.name,
@@ -366,6 +367,7 @@ class Deliaddressacc {
         this.lat,
         this.long,
         this.mobile,
+        this.ccode,
       });
 
   Deliaddressacc.fromJson(Map<String, dynamic> json) {
@@ -378,6 +380,7 @@ class Deliaddressacc {
     lat = json['lat'];
     long = json['long'];
     mobile = json['mobile'];
+    ccode = json['ccode'];
   }
 
   Map<String, dynamic> toJson() {
@@ -391,6 +394,7 @@ class Deliaddressacc {
     data['lat'] = this.lat;
     data['long'] = this.long;
     data['mobile'] = this.mobile;
+    data['ccode'] = this.ccode;
     return data;
   }
 }

@@ -124,7 +124,7 @@ class _SettingState extends State<Setting> {
                           value: isSwitched,
                           activeColor: colorPrimaryLight,
                           activeTextColor: colorPrimary,
-                          inactiveColor: colorPrimaryLight,
+                          inactiveColor: iconColor1,
                           inactiveTextColor: colorPrimary,
                           onChanged: (value) {
 
@@ -153,7 +153,7 @@ class _SettingState extends State<Setting> {
                      value: isSwitched,
                      activeColor: colorPrimaryLight,
                      activeTextColor: colorPrimary,
-                     inactiveColor: colorPrimaryLight,
+                     inactiveColor: iconColor1,
                      inactiveTextColor: colorPrimary,
                      onChanged: (value) {
                        print("VALUE : $value");

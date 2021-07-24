@@ -993,7 +993,7 @@ Widget getDeliveryAddress(){
                   textColor: Colors.white,
                   color: colorPrimary,
                   onPressed: () {
-                    String phone =deliaddressacc.mobile;
+                    String phone =deliaddressacc.ccode+deliaddressacc.mobile;
                     if (phone != null && phone.trim().isNotEmpty) {
                       phone = 'tel:$phone';
                       if ( canLaunch(phone) != null) {
@@ -1018,7 +1018,7 @@ Widget getDeliveryAddress(){
                   textColor: Colors.white,
                   color: Color.fromARGB(255, 159, 145, 101),
                   onPressed: () {
-                    String phone ='${'wa.me/'}${deliaddressacc.mobile}${'/?text'}=${Uri.parse('Hi')}';
+                    String phone ='${'wa.me/'}${deliaddressacc.ccode+deliaddressacc.mobile}${'/?text'}=${Uri.parse('Hi')}';
                     if (phone != null && phone.trim().isNotEmpty) {
                       phone = 'https:$phone';
                       if ( canLaunch(phone) != null) {
