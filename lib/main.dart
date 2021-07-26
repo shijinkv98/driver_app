@@ -2,6 +2,7 @@
 //**Developed by Shijin July 2021
 
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,9 @@ const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
     'This channel is used for important notifications.', // description
-    importance: Importance.high,
+    importance: Importance.max,
+    enableLights: true,
+    sound:RawResourceAndroidNotificationSound('slow_spring_board'),
     playSound: true);
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -63,6 +66,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   static const MethodChannel platformMethodChannel =
   const MethodChannel('com.jafseel/firebase');
   @override
@@ -70,44 +74,32 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     getDeviceToken();
     getDeviceId();
-    // BackgroundLocation.startLocationService();
-    // BackgroundLocation.getLocationUpdates((location) {
-    //   // setState(() {
-    //   this.latitude = location.latitude.toString();
-    //   this.longitude = location.longitude.toString();
-    //   this.accuracy = location.accuracy.toString();
-    //   this.altitude = location.altitude.toString();
-    //   this.bearing = location.bearing.toString();
-    //   this.speed = location.speed.toString();
-    //   this.time =
-    //       DateTime.fromMillisecondsSinceEpoch(location.time.toInt()).toString();
-    // });
+    var initialzationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettings =
+    InitializationSettings(android: initialzationSettingsAndroid);
 
-    // _firebaseMessaging.configure(
-    //   onMessage: (Map<String, dynamic> message) async {
-    //     print("onMessage: $message");
-    //     _showItemDialog(context, message);
-    //   },
-    //   onLaunch: (Map<String, dynamic> message) async {
-    //     print("onLaunch: $message");
-    //     _navigateToItemDetail(message);
-    //   },
-    //   onResume: (Map<String, dynamic> message) async {
-    //     print("onResume: $message");
-    //     _navigateToItemDetail(message);
-    //   },
-    // );
-    // _firebaseMessaging.requestNotificationPermissions(
-    //     const IosNotificationSettings(
-    //         sound: true, badge: true, alert: true, provisional: true));
-    // _firebaseMessaging.onIosSettingsRegistered
-    //     .listen((IosNotificationSettings settings) {
-    //   print("Settings registered: $settings");
-    // });
-    // _firebaseMessaging.getToken().then((String token) {
-    //   deviceToken = token;
-    //   print("token $token");
-    // });
+    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification notification = message.notification;
+      AndroidNotification android = message.notification?.android;
+      if (notification != null && android != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                channel.description,
+                icon: android?.smallIcon,
+              ),
+            ));
+      }
+    });
+
+
   }
 
   @override

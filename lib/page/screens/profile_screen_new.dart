@@ -149,15 +149,15 @@ class _ProfileScreenState extends State<ProfileScreenNew> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         onPressed: () {
-          if (_phoneKey.currentState.validate() &&
-                  _firstNameKey.currentState.validate() &&
-                  _lastNameKey.currentState.validate()
-
-          // && _genderKey.currentState.validate()
-              // && _vehicleKey.currentState.validate()
-
-              )
-          {
+          // if (
+          // _phoneKey.currentState.validate() &&
+          //         _firstNameKey.currentState.validate() &&
+          //         _lastNameKey.currentState.validate()
+          // // && _genderKey.currentState.validate()
+          //     && _vehicleKey.currentState.validate()
+          //
+          //     )
+          // {
             _phoneKey.currentState.save();
             _firstNameKey.currentState.save();
             _lastNameKey.currentState.save();
@@ -172,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreenNew> {
             // _vehicleKey.currentState.save();
             update(_firstname, _lastname, _phone, _vehicle, _email);
             // Navigator.of(context).pushReplacementNamed('/homenew');
-          }
+          // }
         },
         child: Text("UPDATE",
             textAlign: TextAlign.center,
@@ -203,34 +203,38 @@ class _ProfileScreenState extends State<ProfileScreenNew> {
                 Container(
                   margin: EdgeInsets.only(left: 10,right:10,top: 5),
                   width: MediaQuery.of(context).size.width,
-                  child: DropdownButton<Vehicle>(
-                    value: dropdownValueVehicle,
-                    icon: Icon(Icons.arrow_drop_down),
-                    iconSize: 23,
-                    isDense: true,
-                    elevation: 0,
-                    style: TextStyle(color: Colors.black, fontSize: 14),
-                    underline: Container(
-                      height: 1,
-                      color: Colors.white,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: DropdownButton<Vehicle>(
+                      isExpanded: true,
+                      value: dropdownValueVehicle,
+                      icon: Icon(Icons.arrow_drop_down),
+                      iconSize: 23,
+                      isDense: true,
+                      elevation: 0,
+                      style: TextStyle(color: Colors.black, fontSize: 14),
+                      underline: Container(
+                        height: 1,
+                        color: Colors.white,
+                      ),
+                      onChanged: (Vehicle data) {
+                        setState(() {
+                          dropdownValueVehicle = data;
+                          // getUsedItemSubCategories(data.catId);
+                          //selected=data;
+                        });
+                      },
+                      hint:details.vehicletype == ""? Text("Select Vehicle"):Text(details.vehicletype),
+
+                      items: categories.map<DropdownMenuItem<Vehicle>>((Vehicle value) {
+                        return DropdownMenuItem<Vehicle>(
+                          value: value,
+                          child: Container(
+                              width: MediaQuery.of(context).size.width-110,
+                              child: Text(value.type,textAlign: TextAlign.start,)),
+                        );
+                      }).toList(),
                     ),
-                    onChanged: (Vehicle data) {
-                      setState(() {
-                        dropdownValueVehicle = data;
-                        // getUsedItemSubCategories(data.catId);
-                        //selected=data;
-                      });
-                    },
-                    hint:details.vehicletype == ""? Text("Select Vehicle"):Text(details.vehicletype),
-                    
-                    items: categories.map<DropdownMenuItem<Vehicle>>((Vehicle value) {
-                      return DropdownMenuItem<Vehicle>(
-                        value: value,
-                        child: Container(
-                            width: MediaQuery.of(context).size.width-110,
-                            child: Text(value.type,textAlign: TextAlign.start,)),
-                      );
-                    }).toList(),
                   ),
                 ),
                 Container(
@@ -332,7 +336,7 @@ class _ProfileScreenState extends State<ProfileScreenNew> {
               return null;
             }
           },
-          onChanged: (value) {
+          onSaved: (value) {
             _firstname = value;
           },
           textInputAction: TextInputAction.next,
