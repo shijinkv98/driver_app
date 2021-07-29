@@ -67,13 +67,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  static const MethodChannel platformMethodChannel =
-  const MethodChannel('com.jafseel/firebase');
+  // static const MethodChannel platformMethodChannel =
+  // const MethodChannel('com.jafseel/firebase');
   @override
   void initState() {
     super.initState();
-    getDeviceToken();
-    getDeviceId();
+    // getDeviceToken();
+    // getDeviceId();
     var initialzationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
     var initializationSettings =
@@ -108,23 +108,23 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  getDeviceToken() async {
-    try {
-      deviceToken = await platformMethodChannel.invokeMethod('getDeviceToken');
-      debugPrint("***MJM device token: $deviceToken");
-    } catch (e) {
-      debugPrint("***MJM getDeviceToken: error: $e");
-    }
-  }
+  // getDeviceToken() async {
+  //   try {
+  //     deviceToken = await platformMethodChannel.invokeMethod('getDeviceToken');
+  //     debugPrint("***MJM device token: $deviceToken");
+  //   } catch (e) {
+  //     debugPrint("***MJM getDeviceToken: error: $e");
+  //   }
+  // }
 
-  getDeviceId() async {
-    try {
-      deviceId = await platformMethodChannel.invokeMethod('getDeviceId');
-      debugPrint("***MJM deviceId: $deviceId");
-    } catch (e) {
-      debugPrint("***MJM getDeviceId error: $e");
-    }
-  }
+  // getDeviceId() async {
+  //   try {
+  //     deviceId = await platformMethodChannel.invokeMethod('getDeviceId');
+  //     debugPrint("***MJM deviceId: $deviceId");
+  //   } catch (e) {
+  //     debugPrint("***MJM getDeviceId error: $e");
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

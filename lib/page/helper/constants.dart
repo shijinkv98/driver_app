@@ -91,3 +91,33 @@ async {
   await preferences.clear();
   NextPageReplacement(context, LoginScreen());
 }
+Widget getAlertLogout(BuildContext context){
+  return  showDialog(
+    builder: (context) => AlertDialog(
+      title: Center(child: Column(
+        children: [
+          Text('Logout ?', style:TextStyle(color: colorPrimary,fontSize: 18,fontWeight: FontWeight.bold),),
+          SizedBox(height: 10),
+          Text('Are you sure you want to exit ?' , style:TextStyle(color: Colors.grey,fontSize: 15,fontWeight: FontWeight.normal),)
+        ],
+      )),
+      // content: Center(child: Text('Are you sure you want to exit ?')),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () {
+            print("you choose no");
+            Navigator.of(context).pop(false);
+          },
+          child: Text('No',style:TextStyle(color: Colors.grey,fontSize: 15,fontWeight: FontWeight.normal)),
+        ),
+        FlatButton(
+          onPressed: () {
+            logout(context);
+          },
+          child: Text('Yes',style:TextStyle(color: Colors.grey,fontSize: 15,fontWeight: FontWeight.normal)),
+        ),
+      ],
+    ), context: context,
+  ) ??
+      false;
+}

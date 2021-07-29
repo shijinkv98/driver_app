@@ -91,8 +91,8 @@ class _UpdateStatusNewState extends State<UpdateStatusNew> {
               PopupMenuItem(
                 child: InkWell(
                   onTap: () {
+                    getAlertLogout(context);
                     Navigator.pop(context);
-                    logout(context);
                   },
                   child: TextField(
                     enabled: false,

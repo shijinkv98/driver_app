@@ -114,8 +114,8 @@ class _DirectionNewState extends State<DirectionNew> {
               PopupMenuItem(
                 child: InkWell(
                   onTap: () {
+                    getAlertLogout(context);
                     Navigator.pop(context);
-                    logout(context);
                   },
                   child: TextField(
                     enabled: false,

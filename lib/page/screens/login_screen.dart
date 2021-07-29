@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     Widget getForgetPassword(){
       return Container(
-        margin: EdgeInsets.only(top: 5),
+        margin: EdgeInsets.only(top: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

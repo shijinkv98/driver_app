@@ -66,8 +66,8 @@ class _BalanceState extends State<BalanceScreenNew> {
               PopupMenuItem(
                 child: InkWell(
                   onTap: () {
+                    getAlertLogout(context);
                     Navigator.pop(context);
-                    logout(context);
                   },
                   child: TextField(
                     enabled: false,

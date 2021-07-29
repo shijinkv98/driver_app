@@ -1280,8 +1280,8 @@ class _HomeScreenState extends State<HomeScreenNew> {
             PopupMenuItem(
               child: InkWell(
                 onTap: () {
+                  getAlertLogout(context);
                   Navigator.pop(context);
-                  logout(context);
                 },
                 child: TextField(
                   enabled: false,

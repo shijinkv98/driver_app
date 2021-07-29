@@ -138,8 +138,9 @@ class _OrderDetailState extends State<OrderDetailsNew> {
                     PopupMenuItem(
                       child: InkWell(
                         onTap: () {
+                          getAlertLogout(context);
                           Navigator.pop(context);
-                          logout(context);
+
                         },
                         child: TextField(
                           enabled: false,
@@ -346,7 +347,7 @@ class _OrderDetailState extends State<OrderDetailsNew> {
                     width: MediaQuery.of(context).size.width-120,
                     child: Text(itemorder.accproducts[index].productnameacc,style: TextStyle(fontSize: 15,color: Colors.grey,fontWeight: FontWeight.bold),)),
                 Container(
-                    width: MediaQuery.of(context).size.width-340,
+                    width: 50,
                     child: Text(
                       '${itemorder.accproducts[index].quantityacc}${' Nos'}',style: TextStyle(fontSize: 15,color: Colors.grey,fontWeight: FontWeight.bold),))
               ],
@@ -694,6 +695,7 @@ class _OrderDetailState extends State<OrderDetailsNew> {
       ),
     );
   }
+
   Future<void> dutyupdate() async {
     Map body = {
       DUTY_ON:"1",
@@ -718,6 +720,7 @@ class _OrderDetailState extends State<OrderDetailsNew> {
       }
     });
   }
+
   Future<void> dutyoff() async {
     Map body = {
       DUTY_ON:"2"
@@ -921,6 +924,7 @@ Widget getDeliveryAddress(){
           return _getDeliveryInfo(deliaddressacc[index]);
         });
 }
+
   Widget _getDeliveryInfo(Deliaddressacc deliaddressacc) {
     return Container(
       color: Colors.white,

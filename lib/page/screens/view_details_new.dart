@@ -104,8 +104,8 @@ class _ViewDetailsNewState extends State<ViewDetailsNew> {
                     PopupMenuItem(
                       child: InkWell(
                         onTap: () {
+                          getAlertLogout(context);
                           Navigator.pop(context);
-                          logout(context);
                         },
                         child: TextField(
                           enabled: false,
