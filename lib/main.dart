@@ -24,8 +24,6 @@ import 'package:provider/provider.dart';
 
 import 'page/helper/constants.dart';
 import 'page/screens/splash_screen.dart';
-// import 'package:firebase_messaging/firebase_messaging.dart';
-// import 'package:background_location/background_location.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
@@ -33,8 +31,12 @@ const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'This channel is used for important notifications.', // description
     importance: Importance.max,
     enableLights: true,
-    sound:RawResourceAndroidNotificationSound('slow_spring_board'),
+    enableVibration: true,
+    sound:RawResourceAndroidNotificationSound('alarm'),
     playSound: true);
+
+
+
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
@@ -94,6 +96,8 @@ class _MyAppState extends State<MyApp> {
                 channel.name,
                 channel.description,
                 icon: android?.smallIcon,
+                sound:RawResourceAndroidNotificationSound('alarm'),
+                enableVibration: true
               ),
             ));
       }
