@@ -205,7 +205,8 @@ class _ProfileScreenState extends State<ProfileScreenNew> {
                   width: MediaQuery.of(context).size.width,
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    child: DropdownButton<Vehicle>(
+                    child:
+                    DropdownButton<Vehicle>(
                       isExpanded: true,
                       value: dropdownValueVehicle,
                       icon: Icon(Icons.arrow_drop_down),

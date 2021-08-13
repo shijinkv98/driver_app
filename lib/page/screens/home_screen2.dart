@@ -67,8 +67,8 @@ class _HomeScreenState extends State<HomeScreenNew> {
             return getContent();
           } else if (snapshot.hasError) {
             return
-              // enableDataHome();
-              errorScreen('Error: ${snapshot.error}');
+              enableDataHome();
+              // errorScreen('Error: ${snapshot.error}');
           }
           else {
             return  progressBar;
@@ -843,6 +843,8 @@ class _HomeScreenState extends State<HomeScreenNew> {
     );
   }
 
+
+
   Widget _history(History history) {
     Deliaddresshis deliAddress =
     history.deliaddresshis != null && history.deliaddresshis.length > 0
@@ -1164,6 +1166,7 @@ class _HomeScreenState extends State<HomeScreenNew> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
+
             margin: EdgeInsets.only(top: 20),
             child: Align(
               alignment: Alignment.centerLeft,
@@ -1204,15 +1207,15 @@ class _HomeScreenState extends State<HomeScreenNew> {
           ),
           Container(
             //Add this to give height
-            height: MediaQuery.of(context).size.height - 200,
+            height: MediaQuery.of(context).size.height - 250,
             child: TabBarView(children: [
               Container(
-                  margin: EdgeInsets.only(bottom: 20),
+                  margin: EdgeInsets.only(bottom: 10),
                   child: homeScreenResponse.accepted.length != 0 ?
                   _getOrdersList() : _noDataFound('No Orders Found')
               ),
               Container(
-                  margin: EdgeInsets.only(bottom: 55),
+                  margin: EdgeInsets.only(bottom: 10),
                   child: homeScreenResponse.history.length != 0 ?_getHistoryList():_noDataFound('No History Found')),
             ]),
           ),

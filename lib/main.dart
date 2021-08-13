@@ -74,8 +74,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    // getDeviceToken();
-    // getDeviceId();
     var initialzationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
     var initializationSettings =
