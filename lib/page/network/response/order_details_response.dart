@@ -2,13 +2,13 @@ class OrderDetailsResponse {
   String success;
   String message;
   List<Orders> orders;
-  int total;
+  String total;
 
   OrderDetailsResponse({this.success, this.message, this.orders, this.total});
 
   OrderDetailsResponse.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    message = json['message'];
+    success = json['success'].toString();
+    message = json['message'].toString();
     if (json['orders'] != null) {
       orders = new List<Orders>();
       json['orders'].forEach((v) {
@@ -71,22 +71,22 @@ class Orders {
         this.companyaddress});
 
   Orders.fromJson(Map<String, dynamic> json) {
-    orderdetailid = json['orderdetailid'];
-    orderid = json['orderid'];
-    product = json['product'];
-    productId = json['product_id'];
-    description = json['description'];
-    image = json['image'];
-    price = json['price'];
-    quantity = json['quantity'];
-    orderslno = json['orderslno'];
-    accepted = json['accepted'];
-    status = json['status'];
-    ordertype = json['ordertype'];
-    datentime = json['datentime'];
-    cusname = json['cusname'];
-    paymentmod = json['paymentmod'];
-    shopname = json['shopname'];
+    orderdetailid = json['orderdetailid'].toString();
+    orderid = json['orderid'].toString();
+    product = json['product'].toString();
+    productId = json['product_id'].toString();
+    description = json['description'].toString();
+    image = json['image'].toString();
+    price = json['price'].toString();
+    quantity = json['quantity'].toString();
+    orderslno = json['orderslno'].toString();
+    accepted = json['accepted'].toString();
+    status = json['status'].toString();
+    ordertype = json['ordertype'].toString();
+    datentime = json['datentime'].toString();
+    cusname = json['cusname'].toString();
+    paymentmod = json['paymentmod'].toString();
+    shopname = json['shopname'].toString();
     if (json['deliveryaddress'] != null) {
       deliveryaddress = new List<Deliveryaddress>();
       json['deliveryaddress'].forEach((v) {
@@ -154,15 +154,15 @@ class Deliveryaddress {
         this.mobile});
 
   Deliveryaddress.fromJson(Map<String, dynamic> json) {
-    nameAdress = json['name_adress'];
-    house = json['house'];
-    roadName = json['road_name'];
-    streetName = json['street_name'];
-    state = json['state'];
-    country = json['country'];
-    latitude = json['latitude'];
-    long = json['long'];
-    mobile = json['mobile'];
+    nameAdress = json['name_adress'].toString();
+    house = json['house'].toString();
+    roadName = json['road_name'].toString();
+    streetName = json['street_name'].toString();
+    state = json['state'].toString();
+    country = json['country'].toString();
+    latitude = json['latitude'].toString();
+    long = json['long'].toString();
+    mobile = json['mobile'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -188,9 +188,9 @@ class Companyaddress {
   Companyaddress({this.address, this.lat, this.long});
 
   Companyaddress.fromJson(Map<String, dynamic> json) {
-    address = json['address'];
-    lat = json['lat'];
-    long = json['long'];
+    address = json['address'].toString();
+    lat = json['lat'].toString();
+    long = json['long'].toString();
   }
 
   Map<String, dynamic> toJson() {

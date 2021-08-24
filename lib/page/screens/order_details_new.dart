@@ -447,10 +447,12 @@ class _OrderDetailState extends State<OrderDetailsNew> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(right: 20),
+                      margin: EdgeInsets.only(right: 27,),
                       child: DecoratedBox(
 
-                        decoration: const BoxDecoration(color: iconColor1),
+                        decoration: const BoxDecoration(color: iconColor1,
+                        borderRadius: BorderRadius.all(Radius.circular(2))
+                        ),
                         child: Padding(
                           padding:
                               const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
@@ -471,176 +473,191 @@ class _OrderDetailState extends State<OrderDetailsNew> {
                 ),
             // acceptedOrders array value started here
 
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                FadeInImage.assetNetwork(
-                  width: 80.0,
-                  height: 60,
-                  fit: BoxFit.fitHeight,
-                  placeholder: 'assets/images/shop.png',
-                  image: itemorder.shopimage,
-                  // image: item.image,
-                  // image: order?.packageInfo?.origination?.logo ?? '',
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(itemorder.shopname
-                        ,
-                        // order?.packageInfo?.origination?.name ?? '',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(itemorder.address,
-                        // "5/23, Al Seeq Apartment, Al Maqtam Street Abudhab",
-                        // order?.packageInfo?.origination?.getAddress() ?? '',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: const Text(
+                    'Vendor Details',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.black),
                   ),
                 ),
-                Expanded(child:
-                Column(
-                  children: [
-                    RaisedButton(
-                      padding: const EdgeInsets.all(8.0),
-                      textColor: Colors.white,
-                      color: colorPrimary,
-                      onPressed: () {
-                        String phone =itemorder.contact;
-                        if (phone != null && phone.trim().isNotEmpty) {
-                          phone = 'tel:$phone';
-                          if ( canLaunch(phone) != null) {
-                            launch(phone);
-                          }
-                        }
-
-                        // _launchUrl(
-                        //   // 'tel:${task.order.first?.packageInfo?.location?.phone}');
-                        //     'tel:${'6238839396'}');
-                      },
-                      child:
-                      Container(
-                        width: 80,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            FadeInImage.assetNetwork(
-                              width: 15.0,
-                              height: 15,
-                              fit: BoxFit.fitHeight,
-                              placeholder: 'assets/images/call-icon.png',
-                              image: 'assets/images/call-icon.png',
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    FadeInImage.assetNetwork(
+                      width: 80.0,
+                      height: 60,
+                      fit: BoxFit.fitHeight,
+                      placeholder: 'assets/images/shop.png',
+                      image: itemorder.shopimage,
+                      // image: item.image,
+                      // image: order?.packageInfo?.origination?.logo ?? '',
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(itemorder.shopname
+                            ,
+                            // order?.packageInfo?.origination?.name ?? '',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
                             ),
-                            // Image.asset('assets/images/call-icon.png',height: 15,width: 15,),
-                            Container(
-                              margin: EdgeInsets.only(left: 5),
-                              child: Text(
-                                "Call",
-                                style: TextStyle(fontSize: 12),
-                              ),
+                          ),
+                          Text(itemorder.address,
+                            // "5/23, Al Seeq Apartment, Al Maqtam Street Abudhab",
+                            // order?.packageInfo?.origination?.getAddress() ?? '',
+                            style: TextStyle(
+                              color: Colors.black,
                             ),
-
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                    RaisedButton(
-                      padding: const EdgeInsets.all(8.0),
-                      textColor: Colors.white,
-                      color: Color.fromARGB(255, 159, 145, 101),
-                      onPressed: () {
+                    Expanded(child:
+                    Column(
+                      children: [
+                        RaisedButton(
+                          padding: const EdgeInsets.all(8.0),
+                          textColor: Colors.white,
+                          color: colorPrimary,
+                          onPressed: () {
+                            String phone =itemorder.contact;
+                            if (phone != null && phone.trim().isNotEmpty) {
+                              phone = 'tel:$phone';
+                              if ( canLaunch(phone) != null) {
+                                launch(phone);
+                              }
+                            }
 
-                        String phone ='${'wa.me/'}${itemorder.contact}${'/?text'}=${Uri.parse('Hi')}';
-                        if (phone != null && phone.trim().isNotEmpty) {
-                          phone = 'https:$phone';
-                          if ( canLaunch(phone) != null) {
-                            launch(phone);
-                          }
-                        }
-                      },
-                      child: Container(
-                        width: 80,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            FadeInImage.assetNetwork(
-                              width: 15.0,
-                              height: 15,
-                              fit: BoxFit.fitHeight,
-                              placeholder: 'assets/images/chat-icon.png',
-                              image: 'assets/images/chat-icon.png',
-                              // image: orders.image,
-                              // image: order?.packageInfo?.origination?.logo ?? '',
+                            // _launchUrl(
+                            //   // 'tel:${task.order.first?.packageInfo?.location?.phone}');
+                            //     'tel:${'6238839396'}');
+                          },
+                          child:
+                          Container(
+                            width: 80,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FadeInImage.assetNetwork(
+                                  width: 15.0,
+                                  height: 15,
+                                  fit: BoxFit.fitHeight,
+                                  placeholder: 'assets/images/call-icon.png',
+                                  image: 'assets/images/call-icon.png',
+                                ),
+                                // Image.asset('assets/images/call-icon.png',height: 15,width: 15,),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5),
+                                  child: Text(
+                                    "Call",
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ),
+
+                              ],
                             ),
-                            // Image.asset('assets/images/chat-icon.png',height: 15,width: 15,color: Colors.white,),
-                            Container(
-                              margin: EdgeInsets.only(left: 5),
-                              child: Text(
-                                "Chat",
-                                style: TextStyle(fontSize: 12),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
+                        RaisedButton(
+                          padding: const EdgeInsets.all(8.0),
+                          textColor: Colors.white,
+                          color: Color.fromARGB(255, 159, 145, 101),
+                          onPressed: () {
+
+                            String phone ='${'wa.me/'}${itemorder.contact}${'/?text'}=${Uri.parse('Hi')}';
+                            if (phone != null && phone.trim().isNotEmpty) {
+                              phone = 'https:$phone';
+                              if ( canLaunch(phone) != null) {
+                                launch(phone);
+                              }
+                            }
+                          },
+                          child: Container(
+                            width: 80,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                FadeInImage.assetNetwork(
+                                  width: 15.0,
+                                  height: 15,
+                                  fit: BoxFit.fitHeight,
+                                  placeholder: 'assets/images/chat-icon.png',
+                                  image: 'assets/images/chat-icon.png',
+                                  // image: orders.image,
+                                  // image: order?.packageInfo?.origination?.logo ?? '',
+                                ),
+                                // Image.asset('assets/images/chat-icon.png',height: 15,width: 15,color: Colors.white,),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5),
+                                  child: Text(
+                                    "Chat",
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        RaisedButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>
+                                // DirectionNewGoogle()));
+                                DirectionNew(longitude: itemorder.longitude,
+                                    latitude:itemorder.latitude,
+                                    shopname:itemorder.shopname,
+                                    address:itemorder.address,
+                                    liveLat:_location.latitude,
+                                    liveLong:_location.longitude
+                                )));
+
+                            // _launchUrl(
+                            //   // 'http://maps.google.com/?saddr=My+Location&daddr=${task.order.first?.packageInfo?.location?.address}'
+                            //     'http://maps.google.com/?saddr=My+Location&daddr=${'kannur'}');
+                          },
+                          textColor: Colors.white,
+                          color: Color.fromARGB(255, 27, 40, 19),
+                          padding: const EdgeInsets.all(8.0),
+                          child:Container(
+                            width: 80,
+                            child: Row(
+                              children: [
+                                FadeInImage.assetNetwork(
+                                  width: 15,
+                                  height: 15,
+                                  fit: BoxFit.fitHeight,
+                                  placeholder: 'assets/images/locationicon.png',
+                                  image: 'assets/images/locationicon.png',
+                                  // image: orders.image,
+                                  // image: order?.packageInfo?.origination?.logo ?? '',
+                                ),
+                                // Image.asset('assets/images/location-icon.png',height: 15,width: 15,color: Colors.white,),
+                                Container(
+                                  margin: EdgeInsets.only(left: 5),
+                                  child: Text(
+                                    "Location",
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    RaisedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>
-                            // DirectionNewGoogle()));
-                            DirectionNew(longitude: itemorder.longitude,
-                                latitude:itemorder.latitude,
-                                shopname:itemorder.shopname,
-                                address:itemorder.address,
-                                liveLat:_location.latitude,
-                                liveLong:_location.longitude
-                            )));
-
-                        // _launchUrl(
-                        //   // 'http://maps.google.com/?saddr=My+Location&daddr=${task.order.first?.packageInfo?.location?.address}'
-                        //     'http://maps.google.com/?saddr=My+Location&daddr=${'kannur'}');
-                      },
-                      textColor: Colors.white,
-                      color: Color.fromARGB(255, 27, 40, 19),
-                      padding: const EdgeInsets.all(8.0),
-                      child:Container(
-                        width: 80,
-                        child: Row(
-                          children: [
-                            FadeInImage.assetNetwork(
-                              width: 15,
-                              height: 15,
-                              fit: BoxFit.fitHeight,
-                              placeholder: 'assets/images/locationicon.png',
-                              image: 'assets/images/locationicon.png',
-                              // image: orders.image,
-                              // image: order?.packageInfo?.origination?.logo ?? '',
-                            ),
-                            // Image.asset('assets/images/location-icon.png',height: 15,width: 15,color: Colors.white,),
-                            Container(
-                              margin: EdgeInsets.only(left: 5),
-                              child: Text(
-                                "Location",
-                                style: TextStyle(fontSize: 12),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                     ),
                   ],
-                ),
                 ),
               ],
             ),

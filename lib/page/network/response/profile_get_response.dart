@@ -6,8 +6,8 @@ class ProfileGetResponse {
   ProfileGetResponse({this.success, this.message, this.details});
 
   ProfileGetResponse.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    message = json['message'];
+    success = json['success'].toString();
+    message = json['message'].toString();
     if (json['details'] != null) {
       details = new List<Details>();
       json['details'].forEach((v) {

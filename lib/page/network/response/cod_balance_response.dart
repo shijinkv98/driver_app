@@ -8,10 +8,10 @@ class CodBalanceResponse {
       {this.success, this.message, this.collected, this.cashinhand});
 
   CodBalanceResponse.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    message = json['message'];
-    collected = json['collected'];
-    cashinhand = json['cashinhand'];
+    success = json['success'].toString();
+    message = json['message'].toString();
+    collected = json['collected'].toString();
+    cashinhand = json['cashinhand'].toString();
   }
 
   Map<String, dynamic> toJson() {

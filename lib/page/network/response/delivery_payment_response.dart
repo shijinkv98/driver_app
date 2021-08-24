@@ -1,7 +1,7 @@
 class DeliveryPaymentResponse {
   String success;
   String message;
-  int total;
+  String total;
   String orderid;
   String paymenttype;
 
@@ -9,11 +9,11 @@ class DeliveryPaymentResponse {
       {this.success, this.message, this.total, this.orderid, this.paymenttype});
 
   DeliveryPaymentResponse.fromJson(Map<String, dynamic> json) {
-    success = json['Success'];
-    message = json['message'];
-    total = json['Total'];
-    orderid = json['Orderid'];
-    paymenttype = json['Paymenttype'];
+    success = json['Success'].toString();
+    message = json['message'].toString();
+    total = json['Total'].toString();
+    orderid = json['Orderid'].toString();
+    paymenttype = json['Paymenttype'].toString();
   }
 
   Map<String, dynamic> toJson() {

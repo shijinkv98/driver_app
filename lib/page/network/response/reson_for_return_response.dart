@@ -5,8 +5,8 @@ class ReasonForReturnResponse {
   ReasonForReturnResponse({this.success, this.message});
 
   ReasonForReturnResponse.fromJson(Map<String, dynamic> json) {
-    success = json['Success'];
-    message = json['message'];
+    success = json['Success'].toString();
+    message = json['message'].toString();
   }
 
   Map<String, dynamic> toJson() {

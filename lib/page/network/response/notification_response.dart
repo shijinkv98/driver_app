@@ -6,8 +6,8 @@ class NotificationResponse {
   NotificationResponse({this.success, this.message, this.notifications});
 
   NotificationResponse.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    message = json['message'];
+    success = json['success'].toString();
+    message = json['message'].toString();
     if (json['notifications'] != null) {
       notifications = new List<Notifications>();
       json['notifications'].forEach((v) {

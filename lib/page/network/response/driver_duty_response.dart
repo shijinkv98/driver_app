@@ -5,8 +5,8 @@ class DriverDutyResponse {
   DriverDutyResponse({this.success, this.message});
 
   DriverDutyResponse.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    message = json['message'];
+    success = json['success'].toString();
+    message = json['message'].toString();
   }
 
   Map<String, dynamic> toJson() {

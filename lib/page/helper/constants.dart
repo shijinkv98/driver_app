@@ -78,7 +78,7 @@ Widget progressBar = InkWell(
   child: SafeArea(
     child: Center(
       child: SizedBox(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(Colors.red),),
         width: 60,
         height: 60,
       ),

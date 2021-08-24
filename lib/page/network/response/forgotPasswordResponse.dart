@@ -1,14 +1,14 @@
 class ForgotPasswordResponse {
   String success;
   String message;
-  int otp;
+  String otp;
 
   ForgotPasswordResponse({this.success, this.message, this.otp});
 
   ForgotPasswordResponse.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    message = json['message'];
-    otp = json['otp'];
+    success = json['success'].toString();
+    message = json['message'].toString();
+    otp = json['otp'].toString();
   }
 
   Map<String, dynamic> toJson() {

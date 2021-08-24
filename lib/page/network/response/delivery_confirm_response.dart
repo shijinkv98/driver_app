@@ -5,8 +5,8 @@ class DeliveryConfirmResponse {
   DeliveryConfirmResponse({this.success, this.message});
 
   DeliveryConfirmResponse.fromJson(Map<String, dynamic> json) {
-    success = json['Success'];
-    message = json['message'];
+    success = json['Success'].toString();
+    message = json['message'].toString();
   }
 
   Map<String, dynamic> toJson() {

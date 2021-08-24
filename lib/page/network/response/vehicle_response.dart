@@ -6,8 +6,8 @@ class VehicleResponse {
   VehicleResponse({this.success, this.message, this.vehicle});
 
   VehicleResponse.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    message = json['message'];
+    success = json['success'].toString();
+    message = json['message'].toString();
     if (json['details'] != null) {
       vehicle = new List<Vehicle>();
       json['details'].forEach((v) {
@@ -34,8 +34,8 @@ class Vehicle {
   Vehicle({this.id, this.type});
 
   Vehicle.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    type = json['type'];
+    id = json['id'].toString();
+    type = json['type'].toString();
   }
 
   Map<String, dynamic> toJson() {

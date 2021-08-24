@@ -8,9 +8,9 @@ class DriverNewOrderResponse {
       {this.success, this.message, this.drivername, this.orders});
 
   DriverNewOrderResponse.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    message = json['message'];
-    drivername = json['drivername'];
+    success = json['success'].toString();
+    message = json['message'].toString();
+    drivername = json['drivername'].toString();
     if (json['orders'] != null) {
       orders = new List<Orders>();
       json['orders'].forEach((v) {
@@ -62,19 +62,19 @@ class Orders {
         this.status});
 
   Orders.fromJson(Map<String, dynamic> json) {
-    orderdetailid = json['orderdetailid'];
-    orderid = json['orderid'];
-    product = json['product'];
-    productId = json['product_id'];
-    description = json['description'];
-    image = json['image'];
-    timendate = json['timendate'];
-    paymentmode = json['paymentmode'];
-    price = json['price'];
-    quantity = json['quantity'];
-    orderslno = json['orderslno'];
-    accepted = json['accepted'];
-    status = json['status'];
+    orderdetailid = json['orderdetailid'].toString();
+    orderid = json['orderid'].toString();
+    product = json['product'].toString();
+    productId = json['product_id'].toString();
+    description = json['description'].toString();
+    image = json['image'].toString();
+    timendate = json['timendate'].toString();
+    paymentmode = json['paymentmode'].toString();
+    price = json['price'].toString();
+    quantity = json['quantity'].toString();
+    orderslno = json['orderslno'].toString();
+    accepted = json['accepted'].toString();
+    status = json['status'].toString();
   }
 
   Map<String, dynamic> toJson() {

@@ -46,10 +46,12 @@ class _DirectionNewCustomerState extends State<DirectionNewCustomer> {
   String house;
   double liveLat;
   double liveLong;
-
+  String url;
 
 
   Completer<GoogleMapController> _controller = Completer();
+
+
   // Configure map position and zoom
   // static final CameraPosition _kGooglePlex = CameraPosition(
   //   target: LatLng(double.parse(position.latitude), double.parse(position.longitude)),
@@ -261,10 +263,17 @@ class _DirectionNewCustomerState extends State<DirectionNewCustomer> {
             Align(
               alignment: Alignment.bottomCenter,
               child: InkWell(
-                onTap: (){
-                  _launchUrl(
-                    // 'http://maps.google.com/?saddr=My+Location&daddr=${task.order.first?.packageInfo?.origination?.address}');
-                      'https://maps.google.com/?saddr=My+Location&daddr=${latitude}${','}${longitude}');
+                onTap: () async {
+                   url = 'https://www.google.com/maps/search/?api=1&query=${latitude}${','}${longitude}';
+                  if (canLaunch(url) != null) {
+                  await launch(url);
+                  } else {
+                  throw 'Could not launch $url';
+                  }
+                  // _launchUrl(
+                  //   // 'http://maps.google.com/?saddr=My+Location&daddr=${task.order.first?.packageInfo?.origination?.address}');
+                  //   //   'https://maps.google.com/?saddr=My+Location&daddr=${latitude}${','}${longitude}');
+                  //     'https://www.google.com/maps/search/?api=1&query=${latitude}${','}${longitude}');
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -283,7 +292,6 @@ class _DirectionNewCustomerState extends State<DirectionNewCustomer> {
 
     );
   }
-
   Future<void> _launchUrl(String url) async {
     if (await canLaunch(url)) {
       await launch(url);

@@ -268,7 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       dismissible: false, color: Colors.grey),
                   opacity: 0.5,
                 ),
-                Center(child: const CircularProgressIndicator())
+                Center(child:  CircularProgressIndicator())
               ],
             )
                 : Container(
@@ -297,7 +297,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if(result.error!=null)
           ApiCall().showToast(result.error);
       }
-      ApiCall().showToast(result.message!=null?result.message:"");
+      ApiCall().showToast(result.error!=null?result.message:"");
       if(result.success=="1")
       {
 

@@ -85,18 +85,18 @@ class Orders {
         this.ordersnew});
 
   Orders.fromJson(Map<String, dynamic> json) {
-    orderid = json['orderid'];
-    ordertime = json['ordertime'];
-    paymentmod = json['paymentmod'];
-    customer_img = json['customer_img'];
-    accepted = json['accepted'];
+    orderid = json['orderid'].toString();
+    ordertime = json['ordertime'].toString();
+    paymentmod = json['paymentmod'].toString();
+    customer_img = json['customer_img'].toString();
+    accepted = json['accepted'].toString();
     if (json['address'] != null) {
       address = new List<Address>();
       json['address'].forEach((v) {
         address.add(new Address.fromJson(v));
       });
     }
-    customername = json['customername'];
+    customername = json['customername'].toString();
     if (json['ordersnew'] != null) {
       ordersnew = new List<Ordersnew>();
       json['ordersnew'].forEach((v) {
@@ -146,15 +146,15 @@ class Address {
         this.mobile});
 
   Address.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    house = json['house'];
-    roadName = json['road_name'];
-    streetName = json['street_name'];
-    state = json['state'];
-    country = json['country'];
-    lat = json['lat'];
-    long = json['long'];
-    mobile = json['mobile'];
+    name = json['name'].toString();
+    house = json['house'].toString();
+    roadName = json['road_name'].toString();
+    streetName = json['street_name'].toString();
+    state = json['state'].toString();
+    country = json['country'].toString();
+    lat = json['lat'].toString();
+    long = json['long'].toString();
+    mobile = json['mobile'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -181,8 +181,8 @@ class Ordersnew {
   String addressnew;
   String shopimagenew;
   List<Products> products;
-  int productcount;
-  int itemcount;
+  String productcount;
+  String itemcount;
 
   Ordersnew(
       {this.shopidnew,
@@ -197,21 +197,21 @@ class Ordersnew {
         this.itemcount});
 
   Ordersnew.fromJson(Map<String, dynamic> json) {
-    shopidnew = json['shopidnew'];
-    shopnamenew = json['shopnamenew'];
-    contactnew = json['contactnew'];
-    latitudenew = json['latitudenew'];
-    longitudenew = json['longitudenew'];
-    addressnew = json['addressnew'];
-    shopimagenew = json['shopimagenew'];
+    shopidnew = json['shopidnew'].toString();
+    shopnamenew = json['shopnamenew'].toString();
+    contactnew = json['contactnew'].toString();
+    latitudenew = json['latitudenew'].toString();
+    longitudenew = json['longitudenew'].toString();
+    addressnew = json['addressnew'].toString();
+    shopimagenew = json['shopimagenew'].toString();
     if (json['products'] != null) {
       products = new List<Products>();
       json['products'].forEach((v) {
         products.add(new Products.fromJson(v));
       });
     }
-    productcount = json['productcount'];
-    itemcount = json['itemcount'];
+    productcount = json['productcount'].toString();
+    itemcount = json['itemcount'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -276,7 +276,7 @@ class Accepted {
   String rupees;
   String ordertotal;
   String walletapplied;
-  int itemcount;
+  String itemcount;
   List<Deliaddressacc> deliaddressacc;
   List<Acceptedorders> acceptedorders;
 
@@ -306,7 +306,7 @@ class Accepted {
     rupees = json['rupees'].toString();
     ordertotal = json['ordertotal'].toString();
     walletapplied = json['walletapplied'].toString();
-    itemcount = json['itemcount'];
+    itemcount = json['itemcount'].toString();
     if (json['deliaddressacc'] != null) {
       deliaddressacc = new List<Deliaddressacc>();
       json['deliaddressacc'].forEach((v) {
@@ -371,16 +371,16 @@ class Deliaddressacc {
       });
 
   Deliaddressacc.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    house = json['house'];
-    road_name = json['road_name'];
-    street_name = json['street_name'];
-    state = json['state'];
-    country = json['country'];
-    lat = json['lat'];
-    long = json['long'];
-    mobile = json['mobile'];
-    ccode = json['ccode'];
+    name = json['name'].toString();
+    house = json['house'].toString();
+    road_name = json['road_name'].toString();
+    street_name = json['street_name'].toString();
+    state = json['state'].toString();
+    country = json['country'].toString();
+    lat = json['lat'].toString();
+    long = json['long'].toString();
+    mobile = json['mobile'].toString();
+    ccode = json['ccode'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -408,8 +408,8 @@ class Acceptedorders {
   String address;
   String shopimage;
   List<Accproducts> accproducts;
-  int productcountacc;
-  int itemcountshopacc;
+  String productcountacc;
+  String itemcountshopacc;
 
   Acceptedorders(
       {this.shopid,
@@ -437,8 +437,8 @@ class Acceptedorders {
         accproducts.add(new Accproducts.fromJson(v));
       });
     }
-    productcountacc = json['productcountacc'];
-    itemcountshopacc = json['itemcountshopacc'];
+    productcountacc = json['productcountacc'].toString();
+    itemcountshopacc = json['itemcountshopacc'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -464,7 +464,7 @@ class Accproducts {
   String productidacc;
   String quantityacc;
   String priceacc;
-  int itemtotalacc;
+  String itemtotalacc;
   List<Imageacc> imageacc;
 
   Accproducts(
@@ -476,11 +476,11 @@ class Accproducts {
         this.imageacc});
 
   Accproducts.fromJson(Map<String, dynamic> json) {
-    productnameacc = json['productnameacc'];
-    productidacc = json['productidacc'];
-    quantityacc = json['quantityacc'];
-    priceacc = json['priceacc'];
-    itemtotalacc = json['itemtotalacc'];
+    productnameacc = json['productnameacc'].toString();
+    productidacc = json['productidacc'].toString();
+    quantityacc = json['quantityacc'].toString();
+    priceacc = json['priceacc'].toString();
+    itemtotalacc = json['itemtotalacc'].toString();
     if (json['imageacc'] != null) {
       imageacc = new List<Imageacc>();
       json['imageacc'].forEach((v) {
@@ -538,11 +538,11 @@ class History {
         this.deliaddresshis});
 
   History.fromJson(Map<String, dynamic> json) {
-    orderid = json['orderid'];
-    ordertime = json['ordertime'];
-    paymentmod = json['paymentmod'];
-    accepted = json['accepted'];
-    orderstatus = json['orderstatus'];
+    orderid = json['orderid'].toString();
+    ordertime = json['ordertime'].toString();
+    paymentmod = json['paymentmod'].toString();
+    accepted = json['accepted'].toString();
+    orderstatus = json['orderstatus'].toString();
     if (json['ordershis'] != null) {
       ordershis = new List<Ordershis>();
       json['ordershis'].forEach((v) {
@@ -600,15 +600,15 @@ class Deliaddresshis {
       });
 
   Deliaddresshis.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    house = json['house'];
-    road_name = json['road_name'];
-    street_name = json['street_name'];
-    state = json['state'];
-    country = json['country'];
-    lat = json['lat'];
-    long = json['long'];
-    mobile = json['mobile'];
+    name = json['name'].toString();
+    house = json['house'].toString();
+    road_name = json['road_name'].toString();
+    street_name = json['street_name'].toString();
+    state = json['state'].toString();
+    country = json['country'].toString();
+    lat = json['lat'].toString();
+    long = json['long'].toString();
+    mobile = json['mobile'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -634,8 +634,8 @@ class Ordershis {
   String addresshis;
   String shopimagehis;
   List<Productshis> productshis;
-  int productcount;
-  int itemcount;
+  String productcount;
+  String itemcount;
 
   Ordershis(
       {this.shopidhis,
@@ -650,12 +650,12 @@ class Ordershis {
         this.itemcount});
 
   Ordershis.fromJson(Map<String, dynamic> json) {
-    shopidhis = json['shopidhis'];
-    shopnamehis = json['shopnamehis'];
-    contacthis = json['contacthis'];
-    latitudehis = json['latitudehis'];
-    longitudehis = json['longitudehis'];
-    addresshis = json['addresshis'];
+    shopidhis = json['shopidhis'].toString();
+    shopnamehis = json['shopnamehis'].toString();
+    contacthis = json['contacthis'].toString();
+    latitudehis = json['latitudehis'].toString();
+    longitudehis = json['longitudehis'].toString();
+    addresshis = json['addresshis'].toString();
     // shopimagehis = json['shopimagehis'];
     if (json['productshis'] != null) {
       productshis = new List<Productshis>();
@@ -663,8 +663,8 @@ class Ordershis {
         productshis.add(new Productshis.fromJson(v));
       });
     }
-    productcount = json['productcount'];
-    itemcount = json['itemcount'];
+    productcount = json['productcount'].toString();
+    itemcount = json['itemcount'].toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -690,7 +690,7 @@ class Productshis {
   String productid;
   String quantity;
   String price;
-  int itemtotal;
+  String itemtotal;
   List<Image> image;
 
   Productshis(
@@ -702,11 +702,11 @@ class Productshis {
         this.image});
 
   Productshis.fromJson(Map<String, dynamic> json) {
-    productname = json['productname'];
-    productid = json['productid'];
-    quantity = json['quantity'];
-    price = json['price'];
-    itemtotal = json['itemtotal'];
+    productname = json['productname'].toString();
+    productid = json['productid'].toString();
+    quantity = json['quantity'].toString();
+    price = json['price'].toString();
+    itemtotal = json['itemtotal'].toString();
     if (json['image'] != null) {
       image = new List<Image>();
       json['image'].forEach((v) {

@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:projectname33/page/custom/custom_switch.dart';
 import 'package:projectname33/page/helper/apiparams.dart';
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreenNew> {
   String _value = "";
   Timer timer;
   Position _location = Position(latitude: 0.0, longitude: 0.0);
+  DateTime currentBackPressTime;
 
   void _displayCurrentLocation() async {
 
@@ -58,22 +60,25 @@ class _HomeScreenState extends State<HomeScreenNew> {
     // TODO: implement build
     return Scaffold(
       appBar: appBar(),
-      body: FutureBuilder<HomeScreenResponse>(
-        future:
-        ApiCall().execute<HomeScreenResponse, Null>(HOME_PAGE_URL, null),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            homeScreenResponse = snapshot.data;
-            return getContent();
-          } else if (snapshot.hasError) {
-            return
-              enableDataHome();
-              // errorScreen('Error: ${snapshot.error}');
-          }
-          else {
-            return  progressBar;
-          }
-        },
+      body: WillPopScope(
+        onWillPop: onWillPop,
+        child: FutureBuilder<HomeScreenResponse>(
+          future:
+          ApiCall().execute<HomeScreenResponse, Null>(HOME_PAGE_URL, null),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              homeScreenResponse = snapshot.data;
+              return getContent();
+            } else if (snapshot.hasError) {
+              return
+                enableDataHome();
+                // errorScreen('Error: ${snapshot.error}');
+            }
+            else {
+              return  progressBar;
+            }
+          },
+        ),
       ),
     );
   }
@@ -114,7 +119,16 @@ class _HomeScreenState extends State<HomeScreenNew> {
       ],
     );
   }
-
+  Future<bool> onWillPop() {
+    DateTime now = DateTime.now();
+    if (currentBackPressTime == null ||
+        now.difference(currentBackPressTime) > Duration(seconds: 2)) {
+      currentBackPressTime = now;
+      Fluttertoast.showToast(msg: 'Press Back Button again to exit');
+      return Future.value(false);
+    }
+    return Future.value(true);
+  }
   Future<void> acceptOrder(int index) async {
     // _updateNotifier.isProgressShown = true;
 
@@ -1317,7 +1331,8 @@ class _HomeScreenState extends State<HomeScreenNew> {
   }
 
   Widget _getOrdersList() {
-    return ListView.builder(
+    return
+      ListView.builder(
         itemCount: homeScreenResponse.accepted.length,
         itemBuilder: (BuildContext context, int index) {
           return _listOrders(homeScreenResponse.accepted[index], index);

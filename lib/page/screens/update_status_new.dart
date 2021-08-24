@@ -202,7 +202,7 @@ class _UpdateStatusNewState extends State<UpdateStatusNew> {
           ),
           Container(
             //Add this to give height
-            height: MediaQuery.of(context).size.height-145,
+            height: MediaQuery.of(context).size.height-200,
             child: TabBarView(children: [
               Container(
                   color: Colors.white,
